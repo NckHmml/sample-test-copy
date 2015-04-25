@@ -1,0 +1,21 @@
+{
+    "host": "localhost",
+    "port": 8888,
+    "mysql": {
+        "host": "localhost",
+        "user": "vagrant",
+        "password": "vagrant",
+        "database": "vagrant"
+    },
+    "database": {
+        "client": "mysql",
+        "connection": {
+            "host": "localhost",
+            "user": "vagrant",
+            "password": "vagrant",
+            "database": "vagrant",
+            "port": 3306
+        }
+    },
+    "secret": "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Givery",
+    "version": "0.0.0",
+    "description": "Givery",
+    "main": "server.js",
+    "author": {
+        "name": "NckHmml"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "restify": "^3.0.2",
+        "jwt-simple": "^0.3.0",
+        "api-first-spec": "^0.1.7",
+        "chai": "^2.2.0",
+        "moment": "^2.9.0",
+        "mysql": "^2.6.1",
+        "sql-fixtures": "^0.9.0"
+    }
+}
