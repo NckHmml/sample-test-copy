@@ -182,7 +182,7 @@ describe("With company user", function () {
             "from": "2015-05-01"
         }).success(function (data, res) {
             assert.equal(data.code, 200);
-            assert.equal(data.events.length, 0)
+            assert.equal(data.events.length, 0);
             checkSorted(data.events);
             done();
         });
@@ -194,7 +194,7 @@ describe("With company user", function () {
             "offset": 3
         }).success(function (data, res) {
             assert.equal(data.code, 200);
-            assert.equal(data.events.length, 0)
+            assert.equal(data.events.length, 0);
             checkSorted(data.events);
             done();
         });
@@ -207,7 +207,7 @@ describe("With company user", function () {
             "limit": 3
         }).success(function (data, res) {
             assert.equal(data.code, 200);
-            assert.equal(data.events.length, 1)
+            assert.equal(data.events.length, 1);
             assert.equal(data.events[0].name, "Givery Event2");
             checkSorted(data.events);
             done();

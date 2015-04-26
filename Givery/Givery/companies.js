@@ -23,7 +23,7 @@ exports.events = function (req, res, next) {
         res.send({ code: 401, message: '[token] expired' });
         return next();
     }
-
+    
     // Check from
     if (!params.from) {
         res.send(400, '[from] cannot be empty');
@@ -44,11 +44,11 @@ exports.events = function (req, res, next) {
         }
         
         // Check if user is a company
-        if (user.group_id != 2) {
+        if (user.group_id !== 2) {
             res.send({ code: 401, message: 'User is not a company' });
             return next();
         }
-
+        
         // Query for company events
         dataAccess.getCompanyEvents(params, user.id, function (events) {
             // Error handling

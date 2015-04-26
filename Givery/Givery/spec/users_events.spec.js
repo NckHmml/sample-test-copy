@@ -133,7 +133,7 @@ describe("users_events", function () {
             "limit": 1
         }).success(function (data, res) {
             assert.equal(data.code, 200);
-            assert.equal(data.events.length, 1)
+            assert.equal(data.events.length, 1);
             assert.equal(data.events[0].name, "Givery Event1");
             checkSorted(data.events);
             done();

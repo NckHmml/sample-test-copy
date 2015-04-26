@@ -14,13 +14,13 @@ exports.login = function (req, res, next) {
             res.send({ code : 500 });
             return next();
         }
-
+        
         // Create token
         var token = jwt.encode({
             id: user.id,
             exp: moment().add(1, 'h').valueOf()
         }, config.secret);
-
+        
         // Send valid response
         res.send({
             code: 200,

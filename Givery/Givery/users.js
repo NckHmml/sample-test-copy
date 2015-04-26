@@ -61,13 +61,13 @@ exports.reserve = function (req, res, next) {
         }
         
         // Check if user is student
-        if (user.group_id != 1) {
+        if (user.group_id !== 1) {
             res.send({ code: 401, message: 'User is not a student' });
             return next();
         }
         
         // Try to reserve the event
-        dataAccess.tryReserveEvent(user.id, params.event_id, params.reserve == 'true', function (result) {
+        dataAccess.tryReserveEvent(user.id, params.event_id, params.reserve === 'true', function (result) {
             // Error handling
             if (!result) {
                 res.send(500, 'something went wrong');

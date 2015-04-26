@@ -11,7 +11,7 @@ var connection = mysql.createConnection(config.mysql);
  */
 exports.userLogin = function (userdata, callback) {
     connection.query('SELECT * FROM users WHERE email = ? AND password = sha1(?)', [userdata.email, userdata.password], function (err, rows, fields) {
-        if (err || rows.length != 1)
+        if (err || rows.length !== 1)
             return callback(false);
         return callback(rows[0]);
     });
@@ -46,7 +46,7 @@ exports.getUserEvents = function (params, callback) {
         
         rows = rows.map(function (row) {
             // Custom date format
-            row.start_date = moment(row.start_date).format("YYYY-MM-DD HH:mm:ss");
+            row.start_date = moment(row.start_date).format('YYYY-MM-DD HH:mm:ss');
             return row;
         });
         
@@ -61,7 +61,7 @@ exports.getUserEvents = function (params, callback) {
  */
 exports.getUserInfo = function (id, callback) {
     connection.query('SELECT * FROM users WHERE id = ?', [id], function (err, rows, fields) {
-        if (err || rows.length != 1)
+        if (err || rows.length !== 1)
             return callback(false);
         return callback(rows[0]);
     });
@@ -80,7 +80,7 @@ exports.tryReserveEvent = function (userId, eventId, reserve, callback) {
             return callback(false);
         if (rows.length > 0 && reserve)
             return callback(501);
-        if (rows.length == 0 && !reserve)
+        if (rows.length === 0 && !reserve)
             return callback(502);
         
         if (reserve) {
@@ -124,12 +124,12 @@ exports.getCompanyEvents = function (params, userId, callback) {
     }
     
     connection.query(query, [userId, params.from], function (err, rows, fields) {
-        if (err) 
+        if (err)
             return callback(false);
         
         rows = rows.map(function (row) {
             // Custom date format
-            row.start_date = moment(row.start_date).format("YYYY-MM-DD HH:mm:ss");
+            row.start_date = moment(row.start_date).format('YYYY-MM-DD HH:mm:ss');
             return row;
         });
         
