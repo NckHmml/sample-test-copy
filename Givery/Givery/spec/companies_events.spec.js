@@ -52,7 +52,7 @@ var API = spec.define({
             },
             "events": {
                 "required": function (data) {
-                    data.code == 200;
+                    return data.code == 200;
                 }
             },
             "events.id": {

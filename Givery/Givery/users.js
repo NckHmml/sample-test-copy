@@ -1,4 +1,5 @@
 ﻿var jwt = require('jwt-simple');
+var moment = require('moment');
 
 var dataAccess = require('./dataAccess.js');
 var config = require('./config/config.json');
@@ -42,6 +43,12 @@ exports.reserve = function (req, res, next) {
         token = jwt.decode(params.token, config.secret);
     } catch (err) {
         res.send({ code: 401, message: '[token] is not valid' });
+        return next();
+    }
+    
+    // Check token expiration 
+    if (moment().diff(token.exp) >= 0) {
+        res.send({ code: 401, message: '[token] expired' });
         return next();
     }
     
